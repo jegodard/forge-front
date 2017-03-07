@@ -1,0 +1,26 @@
+<section class="main" *ngIf="featuresByFamily?.size > 0" >
+    <template ngFor let-mapEntry [ngForOf]="featuresByFamily | mapValues" [ngForTrackBy]="trackByMapEntry">        
+        
+        <section class="main" *ngIf="mapEntry.key" >
+            <h5 class="header green-text text-darken-3">{{mapEntry.key}}</h5>
+
+            <template ngFor let-feature let-even="even" let-i="index" [ngForOf]="mapEntry.value" [ngForTrackBy]="trackByFeatures">
+                <div *ngIf="even" class="row">
+                    <feature-card 
+                            [feature]="feature"
+                            class="col s12 m6"
+                            (onFeatureStateChange)="onFeatureStateChange($event)">
+                    </feature-card>
+                    
+                    <feature-card 
+                            *ngIf="mapEntry.value[i+1]"
+                            [feature]="mapEntry.value[i+1]"
+                            class="col s12 m6"
+                            (onFeatureStateChange)="onFeatureStateChange($event)">
+                    </feature-card>
+                </div>
+            </template> 
+        </section>
+    
+    </template>
+</section>

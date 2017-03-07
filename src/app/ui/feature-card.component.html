@@ -1,0 +1,38 @@
+<template [ngIf]="feature.enabled">
+    <div class="card horizontal hoverable small">
+        <div class="card-stacked">
+            <div class="card-content">
+                <span class="card-title green-text">{{feature.name | titleCase}}</span>
+                    <blockquote style="margin:0px;">{{feature.description}} </blockquote>
+            </div>
+            <div class="card-bottom">
+                <p>
+                    <input type="checkbox" 
+                            [attr.id]="'feature_' + feature.id" 
+                            (change)="featureStateChanged($event)"/>
+                    <label [attr.for]="'feature_' + feature.id">{{feature.version}}</label>
+                </p>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template [ngIf]="!feature.enabled">
+    <div class="card horizontal small">
+        <div class="card-stacked">
+            <div class="ribbon ribbon-top-right"><span>Soon</span></div>
+            <div class="card-content">
+                <span class="card-title grey-text">{{feature.name | titleCase}}</span>
+                    <blockquote style="margin:0px;" class="disabled grey-text text-lighten-1">
+                        {{feature.description}}
+                    </blockquote>
+            </div>
+            <div class="card-bottom">
+                <p>
+                    <input type="checkbox" [attr.id]="'feature_' + feature.id" disabled="disabled"/>
+                    <label [attr.for]="'feature_' + feature.id">{{feature.version}}</label>
+                </p>
+            </div>
+        </div>
+    </div>
+</template>

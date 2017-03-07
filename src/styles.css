@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+body, html, main, .main, .app, app {
+  background-color: #efefef;
+}
+
+.container.spaced {
+  margin-top : 50px;
+}
+
+h5.header {
+    margin-top: 40px;
+}

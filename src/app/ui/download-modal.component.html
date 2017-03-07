@@ -1,0 +1,21 @@
+<div id="modal-appgen" class="modal bottom-sheet">
+    <div class="modal-content">
+        
+        <h5>Work in progress</h5>
+
+        <div *ngIf="inProgress">
+            <p>Application is being generated from the hearth of our forge...</p>
+            <div class="progress center-align green lighten-4" style="width: 40%;margin-bottom: 20px">
+                <div class="indeterminate center-align green darken-1"></div>
+            </div>
+        </div>
+
+        <div *ngIf="!inProgress">
+            <p>Application has been successfully generated !</p>
+            <a href="#!" (click)="download()" class="modal-action modal-close waves-effect waves-light btn green darken-1">
+                <i class="material-icons left">file_download</i>
+                Download
+            </a>
+        </div>
+    </div>
+</div>

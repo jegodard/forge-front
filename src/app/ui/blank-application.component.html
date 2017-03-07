@@ -1,0 +1,60 @@
+<h5 class="header  green-text text-darken-3">Project information</h5>
+
+<form novalidate (ngSubmit)="onSubmit(blankAppGroup)" [formGroup]="blankAppGroup">
+    <div class="card-panel hoverable">
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <label for="artifactId">Application's name</label> 
+                <input  id="artifactId" type="text"
+                        formControlName="artifactId" 
+                        style="margin-bottom: 0px" 
+                        [ngClass]="{invalid: blankAppGroup.get('artifactId').invalid  && blankAppGroup.get('artifactId').touched}">       
+                <span class="error"
+                    style="position: absolute; z-index: 4;" 
+                    *ngIf="blankAppGroup.get('artifactId').hasError('required') && blankAppGroup.get('artifactId').touched">
+                    Required
+                </span>       
+                <span class="error" *ngIf="blankAppGroup.get('artifactId').hasError('minlength') && blankAppGroup.get('artifactId').touched">
+                    Minimum of 3 characters
+                </span>           
+            </div>
+            <div class="input-field col s12 m6">
+                <label for="groupId">Group Name</label>
+                <input  id="groupId" type="text"
+                        formControlName="groupId"
+                        style="margin-bottom: 0px"  
+                        [ngClass]="{invalid: blankAppGroup.get('groupId').invalid  && blankAppGroup.get('groupId').touched}">
+                <div class="error" *ngIf="blankAppGroup.get('groupId').hasError('required') && blankAppGroup.get('groupId').touched">
+                    Required
+                </div>       
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:50px">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">email</i>
+                <label for="email">Email</label>
+                <input  id="email" type="email"
+                        formControlName="email"
+                        [ngClass]="{invalid: blankAppGroup.get('email').invalid  && blankAppGroup.get('email').touched}">
+                <div class="error" *ngIf="blankAppGroup.get('email').hasError('required') && blankAppGroup.get('email').touched">
+                    Required
+                </div>  
+            </div>
+        </div>
+    </div>
+
+    <features-container></features-container>    
+
+    <div style="position: relative;">
+        <a  class="btn-floating btn-large waves-effect waves-light green darken-1 btn modal-trigger" 
+            style="position: absolute; display: inline-block; right: 5px;margin-bottom: 40px"
+            href="#modal-appgen"
+            [attr.disabled]="blankAppGroup.invalid ? true : null"  
+            (click)="onSubmit(blankAppGroup)">
+                <i class="large material-icons">file_download</i>
+        </a>
+    </div>
+</form>
+
+<download-modal (onDownload)="onDownload()"></download-modal>
