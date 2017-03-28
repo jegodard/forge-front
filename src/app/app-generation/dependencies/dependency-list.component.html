@@ -1,0 +1,18 @@
+<section class="main" *ngIf="dependencies?.length > 0" >
+    <template ngFor let-dependency let-even="even" let-i="index" [ngForOf]="dependencies" [ngForTrackBy]="trackByDependencies">    
+        <div *ngIf="even" class="row">
+            <dependency-card 
+                [dependency]="dependency"
+                class="col s6 m6"
+                (onDependencyStateChange)="onDependencyStateChange($event)">
+            </dependency-card>
+
+            <dependency-card 
+                [dependency]="dependencies[i+1]"
+                class="col s6 m6"
+                (onDependencyStateChange)="onDependencyStateChange($event)">
+            </dependency-card>        
+        </div>
+        
+    </template>
+</section>

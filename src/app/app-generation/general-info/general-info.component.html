@@ -1,0 +1,66 @@
+<div class="card-panel hoverable"  [formGroup]="forgeAppForm">
+    <div class="row">
+        <div class="input-field col s12 m6">
+            <label for="name">Application's name</label> 
+            <input  id="name" type="text"
+                    formControlName="name" 
+                    style="margin-bottom: 0px" 
+                    [ngClass]="{invalid: forgeAppForm.get('name').invalid  && forgeAppForm.get('name').touched}">       
+            <span class="error"
+                style="position: absolute; z-index: 4;" 
+                *ngIf="forgeAppForm.get('name').hasError('required') && forgeAppForm.get('name').touched">
+                Required
+            </span>       
+            <span class="error" *ngIf="forgeAppForm.get('name').hasError('minlength') && forgeAppForm.get('name').touched">
+                Minimum of 3 characters
+            </span>           
+        </div>
+        <div class="input-field col s12 m6">
+            <label for="group">Group Name</label>
+            <input  id="group" type="text"
+                    formControlName="group"
+                    style="margin-bottom: 0px"  
+                    [ngClass]="{invalid: forgeAppForm.get('group').invalid  && forgeAppForm.get('group').touched}">
+            <div class="error" *ngIf="forgeAppForm.get('group').hasError('required') && forgeAppForm.get('group').touched">
+                Required
+            </div>       
+        </div>
+    </div>
+
+    <div class="row" style="margin-top:50px">
+        <div class="col s12 m6">
+            <select id="frameworkId" formControlName="frameworkId"
+                    #t (change)="updateFrameworkVersion(t.value)" class="browser-default">
+                <option value="" disabled selected>Choose your framework</option>
+                <option *ngFor="let framework of frameworks" [value]="framework.id">  
+                    {{framework.name}}
+                </option>
+            </select>
+            <label>Framework</label>
+        </div>        
+        
+        <div class="col s12 m6">
+            <select id="frameworkVersion" formControlName="frameworkVersion"
+                    (change)="frameworkSelected(t.value)" class="browser-default">
+                <option value="" disabled selected>Choose your version</option>
+                <option *ngFor="let frameworkVersion of frameworkVersions" [value]="frameworkVersion">  
+                {{frameworkVersion}}
+                </option>
+            </select>
+            <label>Framework version</label>
+        </div>  
+    </div>
+
+    <div class="row" style="margin-top:50px">
+        <div class="input-field col s12">
+            <i class="material-icons prefix">perm_identity</i>
+            <label for="user">Your Michelin ID</label>
+            <input  id="user" type="text"
+                    formControlName="user"
+                    [ngClass]="{invalid: forgeAppForm.get('user').invalid  && forgeAppForm.get('user').touched}">
+            <div class="error" *ngIf="forgeAppForm.get('user').hasError('required') && forgeAppForm.get('user').touched">
+                Required
+            </div>  
+        </div>
+    </div>
+</div>

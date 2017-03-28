@@ -1,0 +1,18 @@
+<section class="dependency-card" *ngIf="dependency != null" >
+    <div class="card horizontal hoverable small">
+        <div class="card-stacked">
+            <div class="card-content">
+                <span class="card-title green-text">{{dependency.name | titleCase}}</span>
+                    <blockquote style="margin:0px;">{{dependency.description}} </blockquote>
+            </div>
+            <div class="card-bottom">
+                <p>
+                    <input type="checkbox" 
+                            [attr.id]="'dependency_' + dependency.id" 
+                            (change)="dependencyStateChanged($event)"/>
+                    <label [attr.for]="'dependency_' + dependency.id">{{dependency.version}}</label>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

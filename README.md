@@ -2,7 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.1.
 
+## Prerequisites
+Node 6.9.0 or higher and NPM 3 or higher are required. So install them before starting the application.
+
 ## Development server
+After installed Node and NPM, run `npm install -g @angular/cli`.
+Then, install dependencies by running `npm install` inside the project.
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding

@@ -1,34 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { FeatureListComponent } from './containers';
-import { 
-  FeatureCardComponent,
-  BlankApplicationComponent,
-  DownloadModalComponent
-} from './ui';
-import { FeatureService, BlankApplicationService } from './services';
-import { TitleCase, MapValuesPipe } from './pipes';
+import { FrameworkService, ForgeApplicationService } from './services';
+
+import { AppGenerationModule } from './app-generation/app-generation.module'
+import { SharedModule } from './shared/shared.module'
 
 @NgModule({
   declarations: [
-    AppComponent,
-    BlankApplicationComponent,
-    FeatureListComponent,
-    FeatureCardComponent,
-    DownloadModalComponent,
-    TitleCase,
-    MapValuesPipe    
+    AppComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    AppGenerationModule,    
+    SharedModule
   ],
-  providers: [FeatureService, BlankApplicationService],
+  providers: [FrameworkService, ForgeApplicationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

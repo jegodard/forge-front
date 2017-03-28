@@ -1,12 +1,11 @@
 import { FeatureFamily } from '../models'
 
-export class Feature {
+export class Dependency {
 
-    id: number;
+    id: string;
     name: string = '';
     enabled: boolean;
     description: string;
-    featureFamily: FeatureFamily;
 
     constructor(values: Object = {}) {
         Object.assign(this, values);
