@@ -51,7 +51,10 @@ export class AppGenerationComponent implements OnInit {
         });
         
         // Retrieve frameworks list
-        this.frameworkService.getFrameworks().subscribe(frameworks => {this.frameworks = frameworks});
+        this.frameworkService.getFrameworks().subscribe( frameworks => {
+            this.frameworks = frameworks
+            this.frameworks.sort()
+        });
     }
     
     /**

@@ -1,18 +1,56 @@
-<section class="main" *ngIf="dependencies?.length > 0" >
-    <template ngFor let-dependency let-even="even" let-i="index" [ngForOf]="dependencies" [ngForTrackBy]="trackByDependencies">    
+<div class="row">
+    <div class="col s6 m6">
+        <div class="card">
+            <input class="input-card" id="search" placeholder="Search dependency"
+                    #search (input)="onSearchDependency(search.value)">
+            <i class="material-icons input-icon">search</i>
+        </div>
+    </div>
+    <div class="col s6 m6">        
+        <div class="card">
+            <input class="input-card" id="sort" placeholder="Sort">
+            <i class="material-icons input-icon">sort</i>
+        </div>
+    </div>
+</div>
+
+<section class="main" *ngIf="pagedDependencies?.length > 0" >
+    <template ngFor let-dependency let-even="even" let-i="index" [ngForOf]="pagedDependencies" [ngForTrackBy]="trackByDependencies">    
         <div *ngIf="even" class="row">
             <dependency-card 
                 [dependency]="dependency"
+                [checked]="isDependencySelected(dependency)"
                 class="col s6 m6"
                 (onDependencyStateChange)="onDependencyStateChange($event)">
             </dependency-card>
-
+            
             <dependency-card 
-                [dependency]="dependencies[i+1]"
+                *ngIf="pagedDependencies[i+1] != null"
+                [dependency]="pagedDependencies[i+1]"
+                [checked]="isDependencySelected(pagedDependencies[i+1])"
                 class="col s6 m6"
                 (onDependencyStateChange)="onDependencyStateChange($event)">
             </dependency-card>        
-        </div>
-        
+        </div>        
     </template>
 </section>
+
+<div class="row">
+    <div class="center-align">
+        <ul *ngIf="pages?.length > 0" class="pagination">
+            <li [ngClass]="{disabled: currentPage == 1}">
+                <a *ngIf="currentPage > 1" (click)="setPage(currentPage-1)"><i class="material-icons">chevron_left</i></a>
+                <a *ngIf="currentPage == 1"><i class="material-icons">chevron_left</i></a>
+            </li>
+            <li *ngFor="let page of pages" 
+                [ngClass]="{active: currentPage == page}">
+                <a (click)="setPage(page)">{{ page }}</a>
+            </li>
+            <li [ngClass]="{disabled: currentPage == pages?.length}">
+                <a *ngIf="currentPage < pages?.length" (click)="setPage(currentPage+1)"><i class="material-icons">chevron_right</i></a>
+                <a *ngIf="currentPage == pages?.length"><i class="material-icons">chevron_right</i></a>
+            </li>
+        </ul>
+    </div>
+</div>
+

@@ -34,6 +34,7 @@ export class GeneralInfoComponent {
             for (let frameworkVersion of this.selectedFramework.frameworkVersions) {               
                 this.frameworkVersions.push(frameworkVersion.version)
             }
+            this.frameworkVersions.sort()
         }
 
         this.onFrameworkSelected.emit({framework: this.selectedFramework})

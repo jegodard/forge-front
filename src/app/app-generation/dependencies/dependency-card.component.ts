@@ -15,6 +15,7 @@ import { Dependency } from '../../models';
 })
 export class DependencyCardComponent {
   @Input() dependency: Dependency;
+  @Input() checked: boolean = false;
   @Output() onDependencyStateChange = new EventEmitter();
 
   constructor() {}

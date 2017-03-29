@@ -3,11 +3,12 @@
         <div class="card-stacked">
             <div class="card-content">
                 <span class="card-title green-text">{{dependency.name | titleCase}}</span>
-                    <blockquote style="margin:0px;">{{dependency.description}} </blockquote>
+                    <blockquote style="margin:0px;">{{dependency.description | slice:1:150}}... </blockquote>
             </div>
             <div class="card-bottom">
                 <p>
                     <input type="checkbox" 
+                            [checked]="checked"
                             [attr.id]="'dependency_' + dependency.id" 
                             (change)="dependencyStateChanged($event)"/>
                     <label [attr.for]="'dependency_' + dependency.id">{{dependency.version}}</label>
