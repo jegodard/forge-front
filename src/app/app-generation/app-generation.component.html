@@ -1,16 +1,16 @@
 <form [formGroup]="forgeAppForm" (ngSubmit)="onSubmit(forgeAppForm)" novalidate>
     
-    <h5 class="header  green-text text-darken-3">Project information</h5>
+    <h5 class="header red-text text-darken-1">Project information</h5>
     <general-info 
         [formGroup]="forgeAppForm" [frameworks]="frameworks" 
         (onFrameworkSelected)="onFrameworkSelected($event)">
     </general-info>
      
-    <h5 class="header  green-text text-darken-3">Choose dependencies</h5>
+    <h5 class="header red-text text-darken-1">Choose dependencies</h5>
     <dependency-list [allDependencies]="selectedFramework?.dependencies"></dependency-list>
 
     <div style="position: relative;">
-        <a  class="btn-floating btn-large waves-effect waves-light green darken-1 btn modal-trigger" 
+        <a  class="btn-floating btn-large waves-effect waves-light amber accent-2 btn modal-trigger" 
             style="position: absolute; display: inline-block; right: 5px;margin-bottom: 40px"
             href="#modal-appgen"
             [attr.disabled]="forgeAppForm.invalid ? true : null"  

@@ -48,7 +48,9 @@ export class DependencyListComponent {
    * Detect changes on attributes
    */
   ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
+      // When allDependencies are modified
       if (changes['allDependencies'] && this.allDependencies) {
+          this.selectedDependencies = []
           this.searchDependencies = this.allDependencies
           this.setPage(1); 
       }
@@ -57,9 +59,10 @@ export class DependencyListComponent {
   /**
    * 
    */
-  onSearchDependency(name) {    
+  onSearchDependency(name) { 
+    var regex = new RegExp(name,"i");   
     this.searchDependencies = this.allDependencies.filter(function(dependency) {
-      return dependency.name.startsWith(name); 
+      return (dependency.name.search(regex) != -1) 
     });
 
     this.setPage(1)
