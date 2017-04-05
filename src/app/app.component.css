@@ -1,0 +1,7 @@
+.fixed-side-menu {
+    display: block;
+    position: relative;
+    height: 100px;
+    background-color: green;
+    min-width: 256px;
+}

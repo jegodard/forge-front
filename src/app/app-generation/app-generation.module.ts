@@ -9,14 +9,15 @@ import { AppGenerationComponent } from './app-generation.component';
 import { DependencyListComponent } from './dependencies/dependency-list.component';
 import { DependencyCardComponent } from './dependencies/dependency-card.component';
 import { GeneralInfoComponent } from './general-info/general-info.component';
-
+import { AppGenerationRoutingModule } from './app-generation-routing.module'
 
 @NgModule({
   imports: [
       CommonModule,
       FormsModule,
       ReactiveFormsModule,
-      SharedModule
+      SharedModule,
+      AppGenerationRoutingModule
   ],
   declarations: [
     AppGenerationComponent,

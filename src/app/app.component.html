@@ -1,5 +1,16 @@
 <section class="forgeapp">
-
-    <app-generation></app-generation>
     
+    <layout-header></layout-header>
+
+    <div class="row" style="height:100vh;margin-bottom:0px">
+        <div class="col l2 hide-on-med-and-down" style="padding-left:0px">
+            <side-nav></side-nav>
+        </div>
+
+         <div class="col s12 m12 l10">
+            <div style="padding:10px" >
+                <router-outlet></router-outlet>
+            </div>
+         </div>
+    </div>    
 </section>

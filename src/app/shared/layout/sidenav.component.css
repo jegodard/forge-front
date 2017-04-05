@@ -1,0 +1,36 @@
+.side-nav-fixed {
+    background-color:white;
+    height:100vh;
+    padding-top:80px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    padding-left: 10px;
+}
+
+.side-nav-title {
+    margin: 0px;
+}
+
+.side-list-item {
+    line-height: 44px;
+    cursor: pointer;
+    padding-left: 10px;
+} 
+
+.side-list-item a {
+    color: #757575;
+    width: 100%;
+}
+
+
+.side-list-item:hover {
+    background-color: #FFD180;
+}
+
+.material-icons {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    margin-right: 10px;
+    font-size: 20px;
+}

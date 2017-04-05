@@ -88,7 +88,7 @@ export class DependencyListComponent {
   }
 
   /**
-   * 
+   * Check if a dependency has been selected by the user 
    */
   isDependencySelected(dependency: Dependency) : boolean {
     if(dependency == null)
