@@ -3,9 +3,16 @@ import { FeatureFamily } from '../models'
 export class Dependency {
 
     id: string;
-    name: string = '';
     enabled: boolean;
+    name: string = '';
     description: string;
+    artifactId: string;
+    groupId: string;
+    version: string;
+    scope: string;
+    packaging: string;
+    gitUrl: string;
+    documentation: string;
 
     constructor(values: Object = {}) {
         Object.assign(this, values);

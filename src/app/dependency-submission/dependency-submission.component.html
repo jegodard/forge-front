@@ -1,3 +1,107 @@
-<div>
-  Dependency submission component
+<h5 class="header red-text text-darken-1">Propose your dependency</h5>
+  
+<div class="card-panel hoverable"  [formGroup]="dependSubmitForm" (ngSubmit)="onSubmit(dependSubmitForm.value, dependSubmitForm.valid)">
+
+  <div class="row">
+        <div class="input-field col s12 m12">
+            <label for="name">Application's name</label> 
+            <input  id="name" type="text"
+                    formControlName="name"                      
+                    [ngClass]="{invalid: dependSubmitForm.get('name').invalid  && dependSubmitForm.get('name').touched}">       
+            <span class="error"
+                style="position: absolute; z-index: 4;" 
+                *ngIf="dependSubmitForm.get('name').hasError('required') && dependSubmitForm.get('name').touched">
+                Required
+            </span>       
+        </div>
+  </div>
+
+
+  <div class="row">
+        <div class="input-field col s6 m4">
+            <label for="name">Artifact Id</label> 
+            <input  id="name" type="text"
+                    formControlName="artifactId"                      
+                    [ngClass]="{invalid: dependSubmitForm.get('artifactId').invalid  && dependSubmitForm.get('artifactId').touched}">       
+            <span class="error"
+                style="position: absolute; z-index: 4;" 
+                *ngIf="dependSubmitForm.get('artifactId').hasError('required') && dependSubmitForm.get('artifactId').touched">
+                Required
+            </span>       
+        </div>
+        <div class="input-field col s6 m4">
+            <label for="name">Group Id</label> 
+            <input  id="name" type="text"
+                    formControlName="groupId"                      
+                    [ngClass]="{invalid: dependSubmitForm.get('groupId').invalid  && dependSubmitForm.get('groupId').touched}">       
+            <span class="error"
+                style="position: absolute; z-index: 4;" 
+                *ngIf="dependSubmitForm.get('groupId').hasError('required') && dependSubmitForm.get('groupId').touched">
+                Required
+            </span>       
+        </div>
+        <div class="input-field col s6 m4">
+            <label for="name">Version</label> 
+            <input  id="name" type="text"
+                    formControlName="version"                     
+                    [ngClass]="{invalid: dependSubmitForm.get('version').invalid  && dependSubmitForm.get('version').touched}">       
+            <span class="error"
+                style="position: absolute; z-index: 4;" 
+                *ngIf="dependSubmitForm.get('version').hasError('version') && dependSubmitForm.get('version').touched">
+                Required
+            </span>       
+        </div>
+  </div>
+
+  <div class="row">
+        <div class="input-field col s12 m12">
+            <label for="description">Description</label> 
+            <textarea id="description" class="materialize-textarea"              
+                      formControlName="description"                       
+                      [ngClass]="{invalid: dependSubmitForm.get('description').invalid  && dependSubmitForm.get('description').touched}"></textarea>       
+            <span class="error"
+                style="position: absolute; z-index: 4;" 
+                *ngIf="dependSubmitForm.get('description').hasError('required') && dependSubmitForm.get('description').touched">
+                Required
+            </span>       
+        </div>
+  </div>
+
+   <div class="row">
+      <div class="input-field col s6 m6">
+          <label for="scope">Scope</label> 
+          <input  id="scope" type="text"
+                  formControlName="scope" 
+                  [ngClass]="{invalid: dependSubmitForm.get('scope').invalid  && dependSubmitForm.get('scope').touched}">       
+          <span class="error"
+              style="position: absolute; z-index: 4;" 
+              *ngIf="dependSubmitForm.get('scope').hasError('required') && dependSubmitForm.get('scope').touched">
+              Required
+          </span>       
+      </div>
+      <div class="input-field col s6 m6">
+          <label for="packaging">Packaging</label> 
+          <input  id="packaging" type="text">     
+      </div>
+  </div>
+
+   <div class="row">
+      <div class="input-field col s6 m6">
+          <label for="gitUrl">Gitlab URL</label> 
+          <input  id="gitUrl" type="text">     
+      </div>
+      <div class="input-field col s6 m6">
+          <label for="documentation">Documentation URL</label> 
+          <input  id="documentation" type="text">   
+      </div>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="right-align">
+    <button class="btn waves-effect waves-light red" 
+            type="submit" name="action"
+            [attr.disabled]="dependSubmitForm.invalid ? true : null">Propose !</button>
+  </div>
 </div>
