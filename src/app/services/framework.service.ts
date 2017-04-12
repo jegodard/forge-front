@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers } from '@angular/http'
+import { Http, Response, ResponseContentType, Headers, RequestOptions } from '@angular/http'
 import { Observable } from 'rxjs/Rx'
 import { Dependency, Framework } from '../models';
 import { environment } from '../../environments';
@@ -8,7 +8,6 @@ import { environment } from '../../environments';
 export class FrameworkService {
 
   private baseUrl: string = environment.baseUrl;
-  private uri: string = environment.featuresUri;
   private frameworksUri: string = environment.frameworksUri;
 
   constructor(private http: Http) { }
@@ -23,12 +22,14 @@ export class FrameworkService {
   }
 
   /**
-   * GET /api/features
+   * POST /api/frameworks/waitingDependencies
    */
-  getFeatures(): Observable<Dependency[]> {
-    return this.http.get(`${this.baseUrl}${this.uri}`)
-                    .map(this.mapDependencies)
-                    .catch(this.handleError);
+  postWaitingDependency(dependency: Dependency) {    
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers, responseType: ResponseContentType.Json });
+    
+    return this.http.post(`${this.baseUrl}${this.frameworksUri}/waitingDependencies`, JSON.stringify(dependency), options)
+                    .catch(this.handleError);                    
   }
 
 

@@ -29,7 +29,7 @@ export class DependencyListComponent {
   private searchDependencies: Dependency[] = [];
   private pagedDependencies: Dependency[] = [];
 
-  private static PAGE_SIZE=2;
+  private static PAGE_SIZE=12;
   private pages: number[];
   private currentPage: number = 0;
 

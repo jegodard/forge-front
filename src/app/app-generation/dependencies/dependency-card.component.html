@@ -3,7 +3,7 @@
         <div class="card-stacked">
             <div class="card-content">
                 <span class="card-title red-text text-darken-1">{{dependency.name | titleCase}}</span>
-                    <blockquote style="margin:0px;">{{dependency.description | slice:1:150}}... </blockquote>
+                    <blockquote style="margin:0px;">{{dependency.description | slice:0:200}}</blockquote>
             </div>
             <div class="card-bottom">
                 <p>

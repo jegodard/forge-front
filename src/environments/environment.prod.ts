@@ -3,5 +3,6 @@ export const environment = {
   baseUrl: 'http://localhost:8080/api',
   generateAppUri: '/forge/application',
   featuresUri: '/features',
-  frameworksUri: '/frameworks'
+  frameworksUri: '/frameworks',
+  dependenciesUri: '/dependencies'
 };

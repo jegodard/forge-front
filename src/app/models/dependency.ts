@@ -13,6 +13,7 @@ export class Dependency {
     packaging: string;
     gitUrl: string;
     documentation: string;
+    user: string;
 
     constructor(values: Object = {}) {
         Object.assign(this, values);

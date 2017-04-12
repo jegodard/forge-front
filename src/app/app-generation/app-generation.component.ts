@@ -62,6 +62,11 @@ export class AppGenerationComponent implements OnInit {
      */
     onFrameworkSelected(event) {
         this.selectedFramework = event.framework;
+        this.selectedFramework.dependencies.sort(function(a, b){
+            var aM = a.name.toUpperCase();
+            var bM = b.name.toUpperCase();
+            return (aM < bM) ? -1 : (aM > bM) ? 1 : 0;
+        });
         let version = event.version
     }
 
