@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, ResponseContentType, Headers, RequestOptions } from '@angular/http'
+import { ConfigService } from '@nglibs/config';
 import { Observable } from 'rxjs/Rx'
 import { Dependency, Framework } from '../models';
-import { environment } from '../../environments';
 
 @Injectable()
 export class FrameworkService {
 
-  private baseUrl: string = environment.baseUrl;
-  private frameworksUri: string = environment.frameworksUri;
+  private baseUrl: string = this.config.getSettings('api', 'baseUrl');
+  private frameworksUri: string = this.config.getSettings('uri', 'frameworks');
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private readonly config: ConfigService) { }
 
   /**
    * GET /api/frameworks

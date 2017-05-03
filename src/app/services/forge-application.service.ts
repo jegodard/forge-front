@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, ResponseContentType, Headers, RequestOptions } from '@angular/http'
+import { ConfigService } from '@nglibs/config';
 import { Observable } from 'rxjs/Rx'
-import { environment } from '../../environments';
 
 import { ForgeApplication, Dependency } from '../models'
 
@@ -9,10 +9,10 @@ import { ForgeApplication, Dependency } from '../models'
 @Injectable()
 export class ForgeApplicationService {
 
-  private baseUrl: string = environment.baseUrl;
-  private uri: string = environment.generateAppUri;
+  private baseUrl: string = this.config.getSettings('api', 'baseUrl');
+  private uri: string = this.config.getSettings('uri', 'generateApp');
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private readonly config: ConfigService) { }
 
   /**
    * 

@@ -1,5 +1,6 @@
 import { Component, ViewChild, OnInit  } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Framework, Dependency } from '../models'
 import { FrameworkService } from '../services';
@@ -18,7 +19,7 @@ export class DependencySubmissionComponent implements OnInit  {
     private frameworkVersions: String[];
     private selectedFramework: Framework;
 
-    constructor(private frameworkService: FrameworkService) {}
+    constructor(private frameworkService: FrameworkService, private router: Router) {}
 
     ngOnInit() {
         this.dependSubmitForm = new FormGroup({       
@@ -63,8 +64,10 @@ export class DependencySubmissionComponent implements OnInit  {
          
         if(isValid) {
             this.frameworkService.postWaitingDependency(model)
-                                    .subscribe(response => {console.log(response)
-                                });                                        
+                                    .subscribe(response => {
+                                                    console.log(response)
+                                                    this.router.navigateByUrl('/app-generation')
+                                               });                                        
         }
     }
 }

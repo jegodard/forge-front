@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
+import { ConfigModule, ConfigLoader, ConfigHttpLoader } from '@nglibs/config';
+
 
 import { AppComponent } from './app.component';
 import { FrameworkService, ForgeApplicationService } from './services';
@@ -11,6 +13,12 @@ import { DependencySubmissionModule } from './dependency-submission/dependency-s
 import { SharedModule } from './shared/shared.module'
 import { HeaderComponent, SidenavComponent } from './shared'
 import { AppRoutingModule } from './app.routes'
+
+import {environment} from '../environments/environment';
+
+export function configFactory(http: Http): ConfigLoader {
+  return new ConfigHttpLoader(http, environment.configUrl);
+}
 
 @NgModule({
   declarations: [
@@ -26,7 +34,12 @@ import { AppRoutingModule } from './app.routes'
     AppGenerationModule,
     DependencySubmissionModule,    
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ConfigModule.forRoot({
+      provide: ConfigLoader,
+      useFactory: (configFactory),
+      deps: [Http]
+    }),
   ],
   providers: [FrameworkService, ForgeApplicationService],
   bootstrap: [AppComponent]
