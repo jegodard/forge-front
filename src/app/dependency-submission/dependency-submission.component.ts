@@ -3,7 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Framework, Dependency } from '../models'
-import { FrameworkService } from '../services';
+import { FrameworkService, DependencyService } from '../services';
+import { ErrorModalComponent } from '../shared';
 
 @Component({
     selector: 'dependency-submission',
@@ -19,7 +20,10 @@ export class DependencySubmissionComponent implements OnInit  {
     private frameworkVersions: String[];
     private selectedFramework: Framework;
 
-    constructor(private frameworkService: FrameworkService, private router: Router) {}
+    @ViewChild(ErrorModalComponent)
+    public readonly errorModal: ErrorModalComponent;
+
+    constructor(private frameworkService: FrameworkService, private dependencyService: DependencyService, private router: Router) {}
 
     ngOnInit() {
         this.dependSubmitForm = new FormGroup({       
@@ -63,11 +67,13 @@ export class DependencySubmissionComponent implements OnInit  {
         console.log("Send dependency proposition...")
          
         if(isValid) {
-            this.frameworkService.postWaitingDependency(model)
+            this.dependencyService.postRequestDependency(model)
                                     .subscribe(response => {
                                                     console.log(response)
                                                     this.router.navigateByUrl('/app-generation')
-                                               });                                        
+                                               },
+                                               error =>  this.errorModal.show(error.code, error.error, error.message)
+                                    );                                        
         }
     }
 }
