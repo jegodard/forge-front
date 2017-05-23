@@ -1,0 +1,75 @@
+<div class="card-panel">
+    <form [formGroup]="templateAppForm">
+
+            <div class="row" style="margin-top:30px">
+                <div class="col s12 m2">
+                    <div class="circle circle-badge absolute-center" *ngIf="template != null">
+                        {{ template?.creator | initials }}
+                    </div>                    
+                </div>
+                <div class="col s10">
+                    <div class="row" style="margin-bottom:0px">
+                        <div class="col s12">
+                            <h3 class="header red-text text-darken-1" >{{ template?.name }}</h3> 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 grey-text">
+                            <p>{{ template?.description }}</p> 
+                        </div>
+                    </div>                                     
+                </div>
+            </div>
+            
+            <div class="row" style="margin-top:40px;padding-left:20px;padding-right:20px">
+                <div class="input-field col s12 m4">
+                    <label for="name">Name</label> 
+                    <input  id="name" type="text"
+                            formControlName="name"                      
+                            [ngClass]="{invalid: templateAppForm.get('name').invalid  && templateAppForm.get('name').touched}">       
+                    <span class="error"
+                        style="position: absolute; z-index: 4;" 
+                        *ngIf="templateAppForm.get('name').hasError('required') && templateAppForm.get('name').touched">
+                        Required
+                    </span>       
+                </div>
+                <div class="input-field col s12 m4">
+                    <label for="groupId">Group Id</label> 
+                    <input  id="groupId" type="text"
+                            formControlName="groupId"                      
+                            [ngClass]="{invalid: templateAppForm.get('groupId').invalid  && templateAppForm.get('groupId').touched}">       
+                    <span class="error"
+                        style="position: absolute; z-index: 4;" 
+                        *ngIf="templateAppForm.get('groupId').hasError('required') && templateAppForm.get('groupId').touched">
+                        Required
+                    </span>       
+                </div>
+                <div class="input-field col s12 m4">
+                    <label for="user">User</label> 
+                    <input  id="user" type="text"
+                            formControlName="user"                      
+                            [ngClass]="{invalid: templateAppForm.get('user').invalid  && templateAppForm.get('user').touched}">       
+                    <span class="error"
+                        style="position: absolute; z-index: 4;" 
+                        *ngIf="templateAppForm.get('user').hasError('required') && templateAppForm.get('user').touched">
+                        Required
+                    </span>       
+                </div>
+            </div>
+
+            <div class="row" style="margin-top:30px">
+                <div class="center-align">
+                    <a  class="btn waves-effect waves-light red"                        
+                        (click)="onSubmit(templateAppForm.value, templateAppForm.valid)"
+                        [attr.disabled]="templateAppForm.invalid ? true : null"
+                        href="#modal-appgen">Forge your app !</a>
+                </div>
+            </div>
+
+    </form>
+</div>
+
+<dependency-list [allDependencies]="template?.dependencies" [searchBox]="false" [sortBox]="false" [selectable]="false"></dependency-list>
+
+
+<download-modal (onDownload)="onDownload()"></download-modal>

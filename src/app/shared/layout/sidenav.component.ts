@@ -15,10 +15,10 @@ export class SidenavComponent implements OnInit {
   constructor(private templateService: TemplateService) {}
   
   ngOnInit() {
-    this.templateService.getTemplates().subscribe( templates => {
-            this.templates = templates
-            this.templates.sort()
-        });                 
+      this.templateService.getTemplates().subscribe( templates => {
+          this.templates = templates
+          this.templates.sort()
+      });                 
   }
 
 }

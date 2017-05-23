@@ -10,7 +10,7 @@ import { ForgeApplication, Dependency } from '../models'
 export class ForgeApplicationService {
 
   private baseUrl: string = this.config.getSettings('api', 'baseUrl');
-  private uri: string = this.config.getSettings('uri', 'generateApp');
+  private forgeUri: string = this.config.getSettings('uri', 'forge');
 
   constructor(private http: Http, private readonly config: ConfigService) { }
 
@@ -21,7 +21,7 @@ export class ForgeApplicationService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers, responseType: ResponseContentType.Blob });
     
-    return this.http.post(`${this.baseUrl}${this.uri}`, JSON.stringify(forgeApplication), options)
+    return this.http.post(`${this.baseUrl}${this.forgeUri}/application`, JSON.stringify(forgeApplication), options)
                     .catch(this.handleError);                    
   }
 

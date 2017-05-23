@@ -3,7 +3,7 @@
     "baseUrl": "@axe_forge_front.api.protocol@://@axe_forge_back.INTERNAL_DNS@:@axe_forge_back.server.port@/api"
   }, 
   "uri": {
-    "generateApp": "/forge/application",
+    "forge": "/forge",
     "features": "/features",
     "frameworks": "/frameworks",
     "dependencies": "/dependencies",

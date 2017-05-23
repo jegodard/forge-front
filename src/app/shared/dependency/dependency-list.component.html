@@ -1,13 +1,13 @@
 <div class="row">
     <div class="col s6 m6">
-        <div class="card">
+        <div class="card" *ngIf="searchBox">
             <input class="input-card" id="search" placeholder="Search dependency"
                     #search (input)="onSearchDependency(search.value)">
             <i class="material-icons input-icon">search</i>
         </div>
     </div>
     <div class="col s6 m6">        
-        <div class="card">
+        <div class="card" *ngIf="sortBox">
             <input class="input-card" id="sort" placeholder="Sort">
             <i class="material-icons input-icon">sort</i>
         </div>
@@ -20,6 +20,7 @@
             <dependency-card 
                 [dependency]="dependency"
                 [checked]="isDependencySelected(dependency)"
+                [selectable]="selectable"
                 class="col s6 m6"
                 (onDependencyStateChange)="onDependencyStateChange($event)">
             </dependency-card>
@@ -28,6 +29,7 @@
                 *ngIf="pagedDependencies[i+1] != null"
                 [dependency]="pagedDependencies[i+1]"
                 [checked]="isDependencySelected(pagedDependencies[i+1])"
+                [selectable]="selectable"
                 class="col s6 m6"
                 (onDependencyStateChange)="onDependencyStateChange($event)">
             </dependency-card>        

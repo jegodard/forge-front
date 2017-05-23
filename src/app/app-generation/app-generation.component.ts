@@ -6,7 +6,7 @@ import * as FileSaver from 'file-saver';
 import { ForgeApplication, Framework, Dependency } from '../models';
 import { ForgeApplicationService, FrameworkService } from '../services';
 
-import { DependencyListComponent } from './dependencies/dependency-list.component';
+import { DependencyListComponent } from '../shared/dependency/dependency-list.component';
 import { GeneralInfoComponent } from './general-info/general-info.component';
 import { DownloadModalComponent } from '../shared/download-modal.component';
 

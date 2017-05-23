@@ -14,6 +14,8 @@ import {  FrameworkService,
 
 import { AppGenerationModule } from './app-generation/app-generation.module'
 import { DependencySubmissionModule } from './dependency-submission/dependency-submission.module'
+import { AppTemplateModule } from './app-template/app-template.module'
+
 import { SharedModule } from './shared/shared.module'
 import { HeaderComponent, SidenavComponent } from './shared'
 import { AppRoutingModule } from './app.routes'
@@ -36,7 +38,8 @@ export function configFactory(http: Http): ConfigLoader {
     ReactiveFormsModule,
     HttpModule,
     AppGenerationModule,
-    DependencySubmissionModule,    
+    AppTemplateModule,
+    DependencySubmissionModule,  
     SharedModule,
     AppRoutingModule,
     ConfigModule.forRoot({

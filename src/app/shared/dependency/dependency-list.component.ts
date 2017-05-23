@@ -19,6 +19,9 @@ import { Dependency } from '../../models';
     }
     a {
       cursor: pointer;
+    }
+    .row {
+      margin-bottom: 0px
     }`
     ],
 })
@@ -26,6 +29,16 @@ export class DependencyListComponent {
   
   @Input()
   private allDependencies: Dependency[] = [];
+
+  @Input()
+  private searchBox: boolean = true ;
+
+  @Input()
+  private sortBox: boolean = true;
+  
+  @Input()
+  private selectable: boolean = true;
+
   private searchDependencies: Dependency[] = [];
   private pagedDependencies: Dependency[] = [];
 

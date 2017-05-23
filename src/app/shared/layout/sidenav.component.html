@@ -20,7 +20,7 @@
     <div class="divider"></div>
     <ul class="side-list">
         <li *ngFor="let template of templates" class="side-list-item">
-            <a class="waves-effect waves-teal" routerLink="/app-generation" routerLinkActive="active">
+            <a class="waves-effect waves-teal" [routerLink]="['/app-template', template.id]">
                 {{template.name}}
             </a>
         </li>
