@@ -1,5 +1,3 @@
-import { FeatureFamily } from '../models'
-
 export class Dependency {
 
     id: string;

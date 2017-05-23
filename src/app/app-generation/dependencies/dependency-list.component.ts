@@ -36,12 +36,9 @@ export class DependencyListComponent {
   // Dependencies currently selected by user
   selectedDependencies: Dependency[] = []
 
-  
-  dependenciesByFamily : Map<string, Dependency[]> = new Map<string, Dependency[]>();
   constructor(private frameworkService: FrameworkService) {}
 
   ngOnInit() { 
-    this.getFeatures();  
   }
 
   /**
@@ -109,34 +106,4 @@ export class DependencyListComponent {
       this.selectedDependencies.splice(index, 1);
     console.log(this.selectedDependencies)
   }
-
-
-  /**
-   * Retrieve features and group them by family name 
-   */
-  getFeatures() {
-    /*this.frameworkService.getFeatures().subscribe(
-        dependencies => {
-          for (let dependency of dependencies) {
-              let tmpFeatures = this.dependenciesByFamily.get(dependency.featureFamily.name)
-
-              if(tmpFeatures == undefined) 
-                tmpFeatures = []
-              
-              tmpFeatures.push(dependency)
-              this.dependenciesByFamily.set(dependency.featureFamily.name, tmpFeatures)              
-          } 
-          
-          // sort features to get enabled ones in first
-          this.dependenciesByFamily.forEach((value, key: string) => {
-            value.sort(function(a,b) {return (a.enabled === b.enabled)? 0 : a.enabled ? -1 : 1;})
-          });
-        },
-        error => {
-            console.log(error);
-        }
-    ); */
-  }
-  
-
 }

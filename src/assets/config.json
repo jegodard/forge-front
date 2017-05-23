@@ -6,6 +6,7 @@
     "generateApp": "/forge/application",
     "features": "/features",
     "frameworks": "/frameworks",
-    "dependencies": "/dependencies"
+    "dependencies": "/dependencies",
+    "templates": "/templates"
   }
 }

@@ -1,6 +1,6 @@
-export class FeatureFamily {
+export class Template {
 
-    id: number;
+    id: string;
     name: string = '';
 
     constructor(values: Object = {}) {

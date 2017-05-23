@@ -6,7 +6,11 @@ import { ConfigModule, ConfigLoader, ConfigHttpLoader } from '@nglibs/config';
 
 
 import { AppComponent } from './app.component';
-import { FrameworkService, DependencyService, ForgeApplicationService } from './services';
+import {  FrameworkService, 
+          DependencyService, 
+          TemplateService,
+          ForgeApplicationService 
+        } from './services';
 
 import { AppGenerationModule } from './app-generation/app-generation.module'
 import { DependencySubmissionModule } from './dependency-submission/dependency-submission.module'
@@ -41,7 +45,7 @@ export function configFactory(http: Http): ConfigLoader {
       deps: [Http]
     }),
   ],
-  providers: [FrameworkService, DependencyService, ForgeApplicationService],
+  providers: [FrameworkService, DependencyService, TemplateService, ForgeApplicationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
