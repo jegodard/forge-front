@@ -77,6 +77,7 @@ export class AppGenerationComponent implements OnInit {
         console.log("Generate application...")
          
         if(valid) {
+            this.downloadModal.show();
             this.downloadModal.setInProgress();
             value.dependenciesId = this.dependencyListComponent.selectedDependencies.map(dependency => dependency.id)
             this.forgeApplicationService.forgeApplication(value)
@@ -94,5 +95,6 @@ export class AppGenerationComponent implements OnInit {
      */
     onDownload() {
         FileSaver.saveAs(this.generatedApp, this.forgeAppForm.get('name').value +".zip");
+        this.downloadModal.close();
     }
 }

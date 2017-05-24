@@ -23,7 +23,9 @@
         "assets/materialize.css"
       ],
       "scripts": [
-        "../node_modules/materialize-css/dist/js/materialize.js","app/shared/error-modal.component.js" ],
+        "../node_modules/materialize-css/dist/js/materialize.js",
+        "app/shared/error-modal.component.js",
+        "app/shared/download-modal.component.js" ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

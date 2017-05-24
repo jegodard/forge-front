@@ -33,7 +33,7 @@ export class AppTemplateComponent implements OnInit {
 
     @ViewChild(DownloadModalComponent)
     private downloadModal: DownloadModalComponent;
-
+    
     private generatedApp: Blob
 
     constructor(private activatedRoute: ActivatedRoute, private templateService: TemplateService) { }
@@ -58,6 +58,7 @@ export class AppTemplateComponent implements OnInit {
         if(isValid) {
             templateInstance.templateId = this.template.id
             console.log(templateInstance)
+            this.downloadModal.show();
             this.downloadModal.setInProgress();
             this.templateService.postInstanciateTemplate(templateInstance)
                                         .subscribe(response => {                                
@@ -73,5 +74,6 @@ export class AppTemplateComponent implements OnInit {
      */
     onDownload() {
         FileSaver.saveAs(this.generatedApp, this.templateAppForm.get('name').value +".zip");
+        this.downloadModal.close();
     }
 }

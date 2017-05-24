@@ -1,4 +1,4 @@
-<form [formGroup]="forgeAppForm" (ngSubmit)="onSubmit(forgeAppForm)" novalidate>
+<form [formGroup]="forgeAppForm" novalidate>
     
     <h5 class="header red-text text-darken-1">Project information</h5>
     <general-info 
@@ -12,7 +12,6 @@
     <div style="position: relative;">
         <a  class="btn-floating btn-large waves-effect waves-light red darken-1 btn modal-trigger" 
             style="position: absolute; display: inline-block; right: 5px;margin-bottom: 40px"
-            href="#modal-appgen"
             [attr.disabled]="forgeAppForm.invalid ? true : null"  
             (click)="onSubmit(forgeAppForm)">
                 <i class="large material-icons">file_download</i>

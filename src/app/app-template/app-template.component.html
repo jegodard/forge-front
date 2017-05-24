@@ -1,5 +1,5 @@
 <div class="card-panel">
-    <form [formGroup]="templateAppForm">
+    <form [formGroup]="templateAppForm" novalidate>
 
             <div class="row" style="margin-top:30px">
                 <div class="col s12 m2">
@@ -59,10 +59,10 @@
 
             <div class="row" style="margin-top:30px">
                 <div class="center-align">
-                    <a  class="btn waves-effect waves-light red"                        
+                    <a  class="btn waves-effect waves-light red"                    
                         (click)="onSubmit(templateAppForm.value, templateAppForm.valid)"
-                        [attr.disabled]="templateAppForm.invalid ? true : null"
-                        href="#modal-appgen">Forge your app !</a>
+                        [attr.disabled]="templateAppForm.invalid ? true : null">
+                        Forge your app !</a>
                 </div>
             </div>
 
